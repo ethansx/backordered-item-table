@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<layout>
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" ifconfig="backorders/settings/enabled">
+                <name>backorders</name>
+                <path>backorders/index/index/</path>
+                <label>Backorders</label>
+            </action>
+        </reference>
+    </customer_account>
+    <backorders_index_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/gaugeinteractive/backorders.css</name>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="backorders" template="gaugeinteractive/backorders.phtml"/>
+        </reference>
+        <update handle="customer_account"/>
+    </backorders_index_index>
+</layout>

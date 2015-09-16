@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <GaugeInteractive_Backorders>
+            <active>true</active>
+            <codePool>local</codePool>
+        </GaugeInteractive_Backorders>
+    </modules>
+</config>

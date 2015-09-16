@@ -1,0 +1,34 @@
+<?php
+$orders = Mage::getResourceModel('sales/order_collection')
+    ->addFieldToSelect('*')
+    ->addFieldToFilter('customer_id', Mage::getSingleton('customer/session')->getCustomer()->getId())
+    ->setOrder('created_at', 'desc');
+?>
+<div class="page-title">
+    <h1>List of backordered items</h1>
+    <table id="backorders-item-table">
+        <tr>
+            <th>Order ID</th>
+            <th>SKU</th>
+            <th>Quantity Not Shipped</th>
+            <th>Individual SKU Price</th>
+            <th>Total Price</th>
+        </tr>
+        <?php foreach ($orders as $order): ?>
+            <?php $orderId = $order->getIncrementId() ?>
+            <?php foreach ($order->getAllItems() as $item): ?>
+                <?php $qtyOrdered = $item->getQtyOrdered() ?>
+                <?php $qtyShipped = $item->getQtyShipped() ?>
+                <?php if ($qtyOrdered != $qtyShipped): ?>
+                    <tr>
+                        <td><?php echo $orderId ?></td>
+                        <td><?php echo $item->getSku() ?></td>
+                        <td><?php echo $qtyOrdered - $qtyShipped ?></td>
+                        <td><?php echo money_format('$%i', $item->getPrice()) ?></td>
+                        <td><?php echo money_format('$%i', $item->getPrice() * ($qtyOrdered - $qtyShipped)) ?></td>
+                    </tr>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        <?php endforeach; ?>
+    </table>
+</div>

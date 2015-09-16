@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <GaugeInteractive_Backorders>
+            <version>1.0.0</version>
+        </GaugeInteractive_Backorders>
+    </modules>
+    <frontend>
+        <routers>
+            <backorders>
+                <use>standard</use>
+                <args>
+                    <module>GaugeInteractive_Backorders</module>
+                    <frontName>backorders</frontName>
+                </args>
+            </backorders>
+        </routers>
+        <layout>
+            <updates>
+                <backorders module="GaugeInteractive_Backorders">
+                    <file>backorders.xml</file>
+                </backorders>
+            </updates>
+        </layout>
+    </frontend>
+    <global>
+        <helpers>
+            <backorders>
+                <class>GaugeInteractive_Backorders_Helper</class>
+            </backorders>
+        </helpers>
+        <models>
+            <backorders>
+                <class>GaugeInteractive_Backoders_Model</class>
+            </backorders>
+        </models>
+    </global>
+</config>

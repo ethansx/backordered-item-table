@@ -1,0 +1,25 @@
+#backorders-item-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#backorders-item-table td,
+#backorders-item-table th {
+    padding: 7px;
+    border: #000 1px solid;
+}
+
+/* provide some minimal visual accomodation for IE8 and below */
+#backorders-item-table tr {
+    background: #C1C1C0;
+}
+
+/*  Define the background color for all the ODD background rows  */
+#backorders-item-table tr:nth-child(odd) {
+    background: #C1C1C0;
+}
+
+/*  Define the background color for all the EVEN background rows  */
+#backorders-item-table tr:nth-child(even) {
+    background: #fff;
+}
